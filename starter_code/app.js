@@ -46,7 +46,7 @@ app.get("/", (request, response) => {
 
 // /search?q=LeBron&foo=
 app.get("/artists", (req, res) => {
-    console.log(req.query);
+    // console.log(req.query);
     const searchString = req.query.artistInput;
     console.log(searchString);
 
@@ -74,14 +74,14 @@ app.get("/albums/:artistId", (req, res, next) => {
 
     spotifyApi.getArtistAlbums(artistId)
         .then(data => {
-            console.log(data);
+            // console.log(data);
             // res.send(data)
             let albumObjects = data.body.items;
             res.render("albums.hbs", {
                 albumObjects
             })
         })
-    console.log("albums");
+    // console.log("albums");
     // res.render("albums.hbs", {albums});
 
 });
@@ -91,14 +91,14 @@ app.get("/tracks/:albumId", (req, res, next) => {
 
     spotifyApi.getAlbumTracks(albumTracks)
         .then(data => {
-            console.log(data);
+            // console.log(data);
             // res.send(data)
 
             let tracks = data.body.items;
             res.render("tracks.hbs", {
                 tracks
             })
-            console.log(tracks);
+            // console.log(tracks);
         })
         .catch(er => {
             console.log(er);
